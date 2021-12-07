@@ -1,0 +1,42 @@
+
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'creating rds instance for panasonic qms'
+
+Parameters:
+  Environment:
+    Type: String
+    Description: Shortform environment name
+    AllowedPattern: dev|staging|prod
+  Rgn:
+    Type: String
+    Description: aws region
+  RootPass:
+    Type: String
+    Description: Master password
+    NoEcho: true
+    
+Resources:
+  QmsRdsInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage: 500
+      CopyTagsToSnapshot: True
+      DBInstanceClass: db.t3.small
+      DBInstanceIdentifier: !Sub qms-${Environment}-rds-postgres
+      DBName: neuro_qms
+      Engine: postgres
+      MasterUsername: postgres
+      MasterUserPassword: !Sub ${RootPass}
+      StorageEncrypted: True
+      Tags:
+      - Key: Project
+        Value: panasonic-qms
+      - Key: Environment
+        Value: !Ref Environment
+
+Outputs:
+  RDSConString:
+    #Value: !GetAtt QmsRdsInstance.Endpoint.Address
+    Value: !Join ['', [!GetAtt [QmsRdsInstance, Endpoint.Address], ':', !GetAtt [QmsRdsInstance, Endpoint.Port]]]
+    Export:
+      Name: !Sub RDSConString-${Environment}

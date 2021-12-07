@@ -1,0 +1,40 @@
+{
+    "Stacks": [
+        {
+            "StackId": "arn:aws:cloudformation:ap-south-1:116341680296:stack/qms-dev-rds-resource/6ae07ac0-46a4-11ec-b337-02979c629e32",
+            "StackName": "qms-dev-rds-resource",
+            "Description": "creating rds instance for panasonic qms",
+            "Parameters": [
+                {
+                    "ParameterKey": "RootPass",
+                    "ParameterValue": "****"
+                },
+                {
+                    "ParameterKey": "Rgn",
+                    "ParameterValue": "ap-south-1"
+                },
+                {
+                    "ParameterKey": "Environment",
+                    "ParameterValue": "dev"
+                }
+            ],
+            "CreationTime": "2021-11-16T06:14:12.384Z",
+            "RollbackConfiguration": {},
+            "StackStatus": "CREATE_COMPLETE",
+            "DisableRollback": false,
+            "NotificationARNs": [],
+            "Outputs": [
+                {
+                    "OutputKey": "RDSConString",
+                    "OutputValue": "qms-dev-rds-postgres.cvmidrrasup8.ap-south-1.rds.amazonaws.com:5432",
+                    "ExportName": "RDSConString-dev"
+                }
+            ],
+            "Tags": [],
+            "EnableTerminationProtection": false,
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+for Csr create step :-
+
+ nikon]# openssl genrsa -out nikon.key 2048
+
+Generating RSA private key, 2048 bit long modulus
+...................................................................+++
+.......................................+++
+e is 65537 (0x10001)
+[root@ip-172-31-11-104 nikon]# ls
+nikon.key
+
+[root@ip-172-31-11-104 nikon]# openssl req -new -key nikon.key -out nikon.csr
+
+
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [XX]:IN
+State or Province Name (full name) []:Haryana
+Locality Name (eg, city) [Default City]:Gurugram
+Organization Name (eg, company) [Default Company Ltd]:nikon
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) []:serviceamc.nikon.co.in
+Email Address []:support@neuronimbus.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+[root@ip-172-31-11-104 nikon]# ls
+nikon.csr  nikon.key
